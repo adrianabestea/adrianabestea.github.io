@@ -44,6 +44,8 @@ $(document).ready(function() {
   $('a.newsletter-subscribe').each(function(i, el) {
     return $(el).click(function(e) {
       var input, popup;
+      e.preventDefault();
+      e.stopPropagation();
       popup = $(e.target).closest('div').find('.newsletter');
       input = popup.find('input[type=email]');
       if (popup.is(':hidden')) {
