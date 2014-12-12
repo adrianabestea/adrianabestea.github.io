@@ -12,13 +12,15 @@ $(document).ready(function() {
     navigation: false
   });
   subscribe = function(e) {
-    var fields, form, params;
+    var fields, form, input, params;
     e.preventDefault();
     e.stopPropagation();
     form = $(this);
     fields = form.find('fieldset');
+    input = form.find('input[type=email]');
     params = fields.find('input').serializeArray();
     fields.attr("class", "sending");
+    input.blur();
     return $.ajax({
       type: "GET",
       url: form.attr('action') + '-json',
@@ -28,7 +30,8 @@ $(document).ready(function() {
       data: params,
       error: function() {
         console.log("ajax error");
-        return fields.attr("class", "error");
+        fields.attr("class", "error");
+        return input.focus();
       },
       success: function(data) {
         if (data.result === "success") {
@@ -36,7 +39,8 @@ $(document).ready(function() {
           return console.log(data.msg);
         } else {
           fields.attr("class", "error");
-          return console.log(data.msg);
+          console.log(data.msg);
+          return input.focus();
         }
       }
     });
