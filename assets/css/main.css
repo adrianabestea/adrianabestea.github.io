@@ -726,16 +726,18 @@ textarea {
     font-size: 2.5rem;
   }
   .intro li {
-    display: inline-block;
     width: 50%;
   }
   .intro li:nth-child(1) {
     padding-right: 0.5em;
+    float: left;
   }
   .intro li:nth-child(2) {
     padding-left: 0.5em;
+    float: right;
   }
   .intro li:nth-child(3) {
+    clear: both;
     width: 100%;
   }
   .before-and-after .slider__wrapper {
@@ -827,13 +829,19 @@ textarea {
     font-size: 48px;
     font-size: 3rem;
   }
+  .intro ul {
+    overflow: auto;
+  }
   .intro li {
     width: 33.33%;
+    float: left;
   }
   .intro li:nth-child(2) {
     padding-right: 0.5em;
+    float: left;
   }
   .intro li:nth-child(3) {
+    clear: none;
     padding-left: 0.5em;
     width: 33.33%;
   }
